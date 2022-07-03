@@ -10,9 +10,9 @@ class TodoDataBase {
     return box;
   }
 
-  Future<List> getTodos() async {
+  Future<List<Todo>> getTodos() async {
     final box = await TodoBox();
-    List todosList = box.values.toList();
+    List<Todo> todosList = box.values<Todo>.toList();
     return todosList;
   }
 
