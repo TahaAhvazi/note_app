@@ -1,18 +1,17 @@
-import 'dart:ffi';
-
 import 'package:hive/hive.dart';
 import 'package:note_app/models/todo.dart';
 
 class TodoDataBase {
+  String boxname = "TODO";
   // ignore: non_constant_identifier_names
   Future<Box> TodoBox() async {
-    var box = await Hive.openBox<Todo>("TODO");
+    var box = await Hive.openBox<Todo>(boxname);
     return box;
   }
 
   Future<List<Todo>> getTodos() async {
     final box = await TodoBox();
-    List<Todo> todosList = box.values<Todo>.toList();
+    List<Todo> todosList = box.values.toList() as List<Todo>;
     return todosList;
   }
 
